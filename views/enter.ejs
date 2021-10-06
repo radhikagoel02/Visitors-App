@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <section>
+      <h3>Enter Your Details</h3>
+      <form action="/" method="POST" class="form-details">
+        <legend for="name">Enter Name</legend>
+        <input type="text" name="name" id="id" required class="form-styling" />
+        <legend for="email">Enter Email</legend>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          class="form-styling"
+        />
+        <legend for="phone">Enter Phone Numbber</legend>
+        <input type="text" name="phone" id="phone" class="form-styling" />
+        <!-- <legend for="hrs">Enter time(IN 24 HRS FORMAT)</legend>
+          <input
+            type="number"
+            name="cinh"
+            id="cinh"
+            min="0"
+            max="23"
+            required
+          />
+          <input
+            type="number"
+            name="cinm"
+            id="cinm"
+            min="0"
+            max="59"
+            required
+          /> -->
+        <button type="submit" id="submit" class="btn">Submit</button>
+      </form>
+    </section>
+  </body>
+</html>

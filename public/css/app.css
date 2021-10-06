@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+body {
+  background-color: #63a4ff;
+  background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+  padding: 1.5rem;
+}
+a {
+  text-decoration: none;
+}
+
+#enter {
+  display: block;
+  margin: auto;
+  background: #0066b2;
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  line-height: 38px;
+  border-radius: 50px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 15rem;
+  text-align: center;
+}
+
+#enter:hover {
+  background: #fff;
+  color: #339dff;
+  box-shadow: 0 4px 4px rgba(83, 100, 255, 0.32);
+}
+
+section {
+  height: 30rem;
+  width: 25rem;
+  background: linear-gradient(rgba(35, 43, 85, 0.75), rgba(35, 43, 85, 0.95)),
+    no-repeat center center;
+  background-size: cover;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: solid 1px rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+h3 {
+  padding-top: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+}
+
+.form-details {
+  padding: 1.5rem;
+}
+
+.form-styling {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+legend {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+}
+
+.btn {
+  float: left;
+  font-size: large;
+  font-weight: 700;
+  color: #ffffff;
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 1rem;
+  background-color: #1059ff;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: #0f4fe6;
+  transition: background-color 0.5s;
+}
+
+#delete,
+#exit {
+  display: inline-block;
+  margin-right: 10px;
+  background: #f5222d;
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  line-height: 38px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 170px;
+  text-align: center;
+}
+
+#delete:hover,
+#exit:hover {
+  background: #cf1322;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  box-shadow: 0 4px 4px rgba(83, 100, 255, 0.32);
+}
+#exit {
+  background-color: #1890ff;
+}
+#exit:hover {
+  background-color: #096dd9;
+}
+table {
+  padding: 1rem;
+  margin: auto;
+  font-size: large;
+}
+
+.container {
+  width: 50%;
+}
+
+h2 {
+  text-align: center;
+  color: whitesmoke;
+}
+td {
+  padding: 0.7rem;
+}

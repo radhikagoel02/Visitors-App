@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitors App</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <a href="/enter"><button id="enter">Enter The Building</button></a>
+    <section class="container">
+        <h2>Register</h2>
+        <table>
+        <%for(let d of data){%>
+                <tr id="firstrow">
+                    <td><strong>ID</strong></td><td><%=d.id%></td>
+                    </tr>
+                <tr>
+                <td><strong>Name</strong></td><td><%=d.name%></td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td><td><%=d.email%></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone</strong></td><td><%=d.phone%></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Check In Time:</strong></td><td><%if(d.checkInHrs<=9){%><%=0%><%}%><%=d.checkInHrs%>:<%if(d.checkInMins<=9){%><%=0%><%}%><%=d.checkInMins%></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status:</strong></td><td><%=d.status%></td>
+                <%if(d.status==="Present"){%>
+                  <tr id="lastrow">  
+                    <form action="/<%=d.id%>?_method=PUT" method="POST">
+                <td><button id="exit" type="submit">Exit the building</button</td></form>
+                <%}else{%>
+                <tr></tr>
+                    <td><strong>Check Out Time:</strong></td><td><%if(d.checkOutHrs<=9){%><%=0%><%}%><%=d.checkOutHrs%>:<%if(d.checkOutMins<=9){%><%=0%><%}%><%=d.checkOutMins%></td>
+                </tr><tr id="lastrow"><td></td>
+                    <%}%>
+                <form action="/<%=d.id%>?_method=DELETE" method="POST">
+                 <td><button id="delete" type="submit">Delete Entry</button></td>
+                 </tr>
+            </form>
+            <%}%>
+        </table>
+</section>
+</body>
+</html>
