@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 
 mongoose
   .connect(
-    "mongodb+srv://Radhika:02032002%40Goel@cluster0.qmlbs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    connectUrl
   )
   .then(() => {
     console.log("DB CONNECTED");
@@ -78,9 +78,7 @@ app.delete("/:id", async (req, res) => {
 
 function sendemail(email, checkInHrs, checkInMins) {
   const sgMail = require("@sendgrid/mail");
-  const sendgrid = sgMail.setApiKey(
-    "SG.x0UGn_XmR2uPsrZ84SRE7Q.Mih4_XexZm9uNadLE4vqK - bCC - Ab9z9dU6bcGuaaH1g"
-  );
+  const sendgrid = sgMail.setApiKey(api);
   let hrs = checkInHrs.toString();
   let mins = checkInMins.toString();
   if (checkInMins <= 9) {
@@ -100,8 +98,7 @@ function sendemail(email, checkInHrs, checkInMins) {
 
 function sendexmail(email, checkOutHrs, checkOutMins) {
   const sgMail = require("@sendgrid/mail");
-  const sendgrid = sgMail.setApiKey(
-    "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"
+  const sendgrid = sgMail.setApiKey(api
   );
   let mins = checkOutMins.toString();
   let hrs = checkOutHrs.toString();
