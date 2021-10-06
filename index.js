@@ -10,7 +10,7 @@ mongoose
   .then(() => {
     console.log("DB CONNECTED");
   })
-  .catch((er) => {
+  .catch((err) => {
     console.log(err);
   });
 app.set("view engine", "ejs");
@@ -20,8 +20,12 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (req, res) => {
-  const data = await Data.find({});
-  res.render("home", { data });
+  try {
+    const data = await Data.find({});
+    res.render("home", { data });
+  } catch {
+    (err) => console.log(err);
+  }
 });
 
 app.get("/enter", (req, res) => {
@@ -33,9 +37,13 @@ app.post("/", async (req, res) => {
   let date = new Date();
   let checkInHrs = date.getHours();
   let checkInMins = date.getMinutes();
-  sendemail(email, checkInHrs, checkInMins);
-  await Data.create({ name, email, phone, checkInHrs, checkInMins });
-  res.redirect("/");
+  try {
+    await sendemail(email, checkInHrs, checkInMins);
+    await Data.create({ name, email, phone, checkInHrs, checkInMins });
+    res.redirect("/");
+  } catch {
+    (err) => console.log(err);
+  }
 });
 
 app.put("/:id", async (req, res) => {
@@ -43,18 +51,26 @@ app.put("/:id", async (req, res) => {
   let date = new Date();
   let checkOutHrs = date.getHours();
   let checkOutMins = date.getMinutes();
-  const user = await Data.findById(id);
-  sendexmail(user.email, checkOutHrs, checkOutMins);
-  await Data.findByIdAndUpdate(id, {
-    $set: { status: "Checked Out", checkOutHrs, checkOutMins },
-  });
-  res.redirect("/");
+  try {
+    const user = await Data.findById(id);
+    await sendexmail(user.email, checkOutHrs, checkOutMins);
+    await Data.findByIdAndUpdate(id, {
+      $set: { status: "Checked Out", checkOutHrs, checkOutMins },
+    });
+    res.redirect("/");
+  } catch {
+    (err) => console.log(err);
+  }
 });
 
 app.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  await Data.findByIdAndDelete(id);
-  res.redirect("/");
+  try {
+    await Data.findByIdAndDelete(id);
+    res.redirect("/");
+  } catch {
+    (err) => console.log(err);
+  }
 });
 
 function sendemail(email, checkInHrs, checkInMins) {
@@ -76,7 +92,7 @@ function sendemail(email, checkInHrs, checkInMins) {
     subject: "Entering building",
     text: `Hi you entered the building at ${hrs}:${mins}`,
   };
-  sgMail.send(msg);
+  sendgrid.send(msg);
 }
 
 function sendexmail(email, checkOutHrs, checkOutMins) {
@@ -98,7 +114,7 @@ function sendexmail(email, checkOutHrs, checkOutMins) {
     subject: "Checking out",
     text: `Hi you checked out at ${hrs}:${mins}`,
   };
-  sgMail.send(msg);
+  sendgrid.send(msg);
 }
 
 const port = process.env.PORT || 3000;
