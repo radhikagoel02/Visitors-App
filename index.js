@@ -101,4 +101,5 @@ function sendexmail(email, checkOutHrs, checkOutMins) {
   sgMail.send(msg);
 }
 
-app.listen(3000);
+const port = process.env.PORT || 3000;
+app.listen(port);
