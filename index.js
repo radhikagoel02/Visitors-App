@@ -6,10 +6,13 @@ const Data = require("./models/user");
 const methodOverride = require("method-override");
 
 mongoose
-  .connect("mongodb://localhost:27017/reception-db")
+  .connect(
+    "mongodb+srv://Radhika:02032002%40Goel@cluster0.qmlbs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("DB CONNECTED");
   })
+
   .catch((err) => {
     console.log(err);
   });
